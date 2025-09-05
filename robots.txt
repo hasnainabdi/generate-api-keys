@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://hasnainabdi.github.io/portfolio/#home/sitemap.xml
+
+body{margin:0;font-family:sans-serif;background:#f4f4f4;color:#222}
+header{background:#222;color:#fff;padding:20px 0;text-align:center}const $=e=>document.querySelector(e);const toast=e=>{const t=$("#toast");t.textContent=e,t.classList.add("show"),setTimeout(()=>t.classList.remove("show"),2e3)};

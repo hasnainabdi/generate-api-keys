@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free API Generator</title>
+  <meta name="description" content="Generate free API keys by category. Frontend demo with header, hero, features, and footer."/>
+  <meta name="keywords" content="API generator, free API, API key, SaaS demo, frontend tool, JavaScript API, responsive, open source, Muhammad Hasnain, portfolio, web app, category API, developer tool, modern UI, HTML CSS JS">
+  <meta name="author" content="Muhammad Hasnain">
+  <meta property="og:title" content="Free API Generator by Muhammad Hasnain">
+  <meta property="og:description" content="Generate demo API keys by category. Modern, responsive, and open source.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hasnainabdi.github.io/portfolio/#home">
+  <meta property="og:image" content="https://hasnainabdi.github.io/portfolio/assets/og-image.png">
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png">
+  <link rel="canonical" href="https://hasnainabdi.github.io/portfolio/#home">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this a real, lifetime key?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This frontend demo generates a client-side key and stores it in your browser. To issue lifetime keys for real usage, connect a backend and a database."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change categories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Add, rename, or remove categories in the HTML or load them dynamically later."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    /* Loader styles */
+    #loader-bg {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(11,18,32,0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.6s cubic-bezier(.4,0,.2,1);
+      will-change: opacity;
+    }
+    .loader {
+      width: 60px; height: 60px;
+      border: 6px solid #4f7cff;
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      box-shadow: 0 0 24px #4f7cff44;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @media (max-width: 700px) {
+      .hero-inner { grid-template-columns: 1fr !important; }
+      .container { padding: 0 8px; }
+      .card, .feature, .step { padding: 10px !important; }
+      .hero h1 { font-size: 1.5rem !important; }
+      .btn, .cta, .ghost { font-size: 1rem !important; padding: 10px 10px !important; }
+      .row { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader-bg"><div class="loader"></div></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true" role="img" aria-label="API Generator Logo"></div>
+        <span>Free API Generator</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#generator">Generator</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#generator">Try it free</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#generator">Generator</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>Generate API keys by category in seconds</h1>
+        <p>Pick a category, press generate, and get a key. The frontend is ready. Later, you can connect a backend to issue lifetime keys and validate usage.</p>
+        <div class="actions">
+          <a class="cta" href="#generator">Generate a key</a>
+          <a class="ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+      <div class="card-visual">
+        <div class="visual-inner">
+          <div class="visual-header">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <div class="visual-line"></div>
+          <div class="visual-line" style="width:70%"></div>
+          <div class="visual-line" style="width:50%"></div>
+          <div style="margin-top:auto; display:grid; gap:8px">
+            <div class="visual-line" style="height:42px"></div>
+            <div class="visual-line" style="height:42px; width:60%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- About Section -->
+
+  <!-- Types of APIs Section -->
+  <section id="types-of-apis" class="section">
+    <div class="container">
+      <h2>Types of APIs</h2>
+      <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:24px;margin-top:18px">
+        <div class="feature" style="align-items:center;text-align:center">
+          <div style="font-size:2.2em;margin-bottom:8px;">🔗</div>
+          <h3>REST API</h3>
+          <p class="muted">Most common web API, uses HTTP methods (GET, POST, etc.) and JSON. Simple, scalable, and stateless.</p>
+        </div>
+        <div class="feature" style="align-items:center;text-align:center">
+          <div style="font-size:2.2em;margin-bottom:8px;">🕸️</div>
+          <h3>GraphQL API</h3>
+          <p class="muted">Flexible query language for APIs. Clients can request exactly the data they need in a single request.</p>
+        </div>
+        <div class="feature" style="align-items:center;text-align:center">
+          <div style="font-size:2.2em;margin-bottom:8px;">💬</div>
+          <h3>WebSocket API</h3>
+          <p class="muted">Real-time, two-way communication between client and server. Great for chat, games, and live updates.</p>
+        </div>
+        <div class="feature" style="align-items:center;text-align:center">
+          <div style="font-size:2.2em;margin-bottom:8px;">📦</div>
+          <h3>SOAP API</h3>
+          <p class="muted">Protocol-based API using XML. Often used in enterprise and legacy systems for secure, structured data exchange.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2>Categories</h2>
+      <p class="muted">Choose from common AI use cases. You can add or rename any item later.</p>
+      <div class="grid" style="margin-top:12px">
+        <div class="feature">
+          <div class="chip">Image Generator</div>
+          <h3>Images</h3>
+          <p class="muted">Best for text-to-image or upscaling services.</p>
+        </div>
+        <div class="feature">
+          <div class="chip">Video Generator</div>
+          <h3>Video</h3>
+          <p class="muted">Create, edit, or transcode short clips.</p>
+        </div>
+        <div class="feature">
+          <div class="chip">Calling AI Agent</div>
+          <h3>Agents</h3>
+          <p class="muted">Voice calling or task bots powered by AI.</p>
+        </div>
+        <div class="feature">
+          <div class="chip">Text Generator</div>
+          <h3>Text</h3>
+          <p class="muted">Summaries, chat, and content generation.</p>
+        </div>
+      </div>
+
+      <!-- Generator Card -->
+      <div id="generator" class="card">
+        <h2 style="margin:0 0 8px">Free API Generator</h2>
+        <p class="muted" style="margin:0 0 12px">This demo creates a client-side key. Hook up a backend later for lifetime, verifiable keys.</p>
+        <div class="row">
+          <div>
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="image">Image Generator</option>
+              <option value="video">Video Generator</option>
+              <option value="ai-agent">Calling AI Agent</option>
+              <option value="text">Text Generator</option>
+            </select>
+          </div>
+          <div>
+            <label for="userId">User ID (optional)</label>
+            <input id="userId" type="text" placeholder="e.g. user_786 or email" />
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <button class="btn" id="genBtn">Generate key</button>
+          <button class="btn secondary" id="restoreBtn" title="Restore previously saved key for this category">Restore saved</button>
+        </div>
+        <div class="result" style="display:none" id="resultWrap">
+          <input id="apiKey" type="text" readonly value="" />
+          <button class="btn secondary" id="copyBtn" style="display:none">Copy</button>
+        </div>
+        <div id="apiCodeExample" style="display:none; margin-top:18px">
+          <label style="font-weight:700; color:var(--brand);">API Usage Example</label>
+          <pre style="background:var(--card);color:var(--text);padding:16px;border-radius:12px;overflow-x:auto;font-size:1em;margin:0;">
+<code id="apiCodeBlock">// Example will appear here</code>
+          </pre>
+        </div>
+        <small class="muted">Client-only demo: keys are remembered locally per category using your browser storage.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="section">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><strong>1. Pick a category</strong><p class="muted">Select Image, Video, Agent, or Text.</p></div>
+        <div class="step"><strong>2. Generate</strong><p class="muted">We create a namespaced key and show it on screen.</p></div>
+        <div class="step"><strong>3. Save or copy</strong><p class="muted">Copy the key or restore it from your browser later.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="feature">
+          <h3>Is this a real, lifetime key?</h3>
+          <p class="muted">This frontend demo generates a client-side key and stores it in your browser. To issue lifetime keys for real usage, connect a backend and a database.</p>
+        </div>
+        <div class="feature">
+          <h3>Can I change categories?</h3>
+          <p class="muted">Yes. Add, rename, or remove categories in the HTML or load them dynamically later.</p>
+        </div>
+        <div class="feature">
+          <h3>How secure are the generated keys?</h3>
+          <p class="muted">The keys are generated on the client side and stored in your browser. For production, always use a backend to generate and validate keys securely.</p>
+        </div>
+        <div class="feature">
+          <h3>Can I use this tool on mobile devices?</h3>
+          <p class="muted">Yes, the tool is fully responsive and works on all modern mobile and desktop browsers.</p>
+        </div>
+        <div class="feature">
+          <h3>How do I restore a previously generated key?</h3>
+          <p class="muted">Click the "Restore saved" button after selecting your category. If a key was generated and saved before, it will be restored.</p>
+        </div>
+        <div class="feature">
+          <h3>Can I customize the categories?</h3>
+          <p class="muted">Absolutely! You can edit the HTML to add, remove, or rename categories as per your needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <!-- Do not remove this credit link without permission from Muhammad Hasnain -->
+        Copyright 2025 Free API Generator Design by 
+        <a href="https://hasnainabdi.github.io/portfolio/#home" target="_blank" style="color: var(--brand); text-decoration: underline; font-weight:600;">
+          <span style="margin-right:4px;">Muhammad Hasnain</span>
+          <span title="Credit lock" style="font-size:1em; vertical-align:middle;">&#128274;</span>
+        </a>
+      </div>
+      <div style="display:flex; gap:12px">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    // Hide loader when page is ready
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('loader-bg');
+      if(loader) {
+        setTimeout(function() {
+          loader.style.opacity = '0';
+          setTimeout(function(){ loader.style.display = 'none'; }, 700);
+        }, 200); // slight delay for smoothness
+      }
+    });
+  </script>
+</html>
